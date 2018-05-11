@@ -22,7 +22,7 @@
 
         $token = generate_token();
 
-        setcookie('csrf_token', $token, time() + 300, '/', 'localhost',true);
+        setcookie('csrf_token', $token, time() + 300, '/', 'localhost',false);
 
         header("Location:profile.php");
         exit;

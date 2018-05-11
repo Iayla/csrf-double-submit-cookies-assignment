@@ -131,8 +131,8 @@
 
                 								echo "<div class='alert alert-primary' role='alert'>".$fname."</div>";
                 								echo "<div class='alert alert-secondary' role='alert'>".$university."</div>";
-                								echo "<div class='alert alert-success' role='alert'>".$degree."</div>";
-                								echo "<div class='alert alert-info' role='alert'>".$year."</div>";
+                								echo "<div class='alert alert-primary' role='alert'>".$degree."</div>";
+                								echo "<div class='alert alert-primary' role='alert'>".$year."</div>";
 
                 							}
                 							else
