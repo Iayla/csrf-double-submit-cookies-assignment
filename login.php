@@ -1,3 +1,49 @@
+<?php
+    if(isset($_POST['submit'])) {
+      Flogin();
+    }
+  ?>
+
+  <?php
+    function Flogin()
+    {
+      $user_email = 'my@gmail.com';
+      $user_password = 'password';
+
+      $email_in = $_POST['email'];
+      $password_in = $_POST['password'];
+
+      if(($email_in == $user_email)&&($password_in == $user_password)) {
+        session_set_cookie_params(300);
+        session_start();
+        session_regenerate_id();
+
+        setcookie('S_cookie', session_id(), time() + 300, '/');
+
+        $token = generate_token();
+
+        setcookie('csrf_token', $token, time() + 300, '/', 'localhost',true);
+
+        header("Location:profile.php");
+        exit;
+      }else{
+        echo "<script> alert('Invalid Credentials, Please try again.') </script>";
+      }
+    }
+
+    function generate_token(){
+      return sha1(base64_encode(openssl_random_pseudo_bytes(30)));
+    }
+  ?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +115,7 @@
             ?>
 
             <?php
-              if(!isset($_COOKIE['session_cookie'])) {
+              if(isset($_COOKIE['session_cookie'])) {
                 echo "<li><a href='login.php'> Log In </a></li>";
               }
             ?>
@@ -80,8 +126,8 @@
 
 
           <?php
-            if(isset($_COOKIE['session_cookie'])) {
-              echo "<li><a href='user-logout.php'> Log Out </a></li>";
+            if(!isset($_COOKIE['session_cookie'])) {
+              echo "<li><a href='logout.php'> Log Out </a></li>";
             }
           ?>
 
@@ -105,7 +151,30 @@
       <h> Using Double Submit Cookies </h>
       <p>  </p>
       <hr>
-      <h3>Welcome !</h3>
+
+      <h3>Enter credentials to Login </h3>
+    </br>
+      <form action ='login.php' method='POST' enctype='multipart/form-data'>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" name="email" Placeholder="User Email">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label">password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="password" name="password" Placeholder="Password">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" id="submit" name="submit">Login</button>
+
+
+
+          </form>
       <p> </p>
     </div>
     <div class="col-sm-2 sidenav">

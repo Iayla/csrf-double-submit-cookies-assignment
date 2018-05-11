@@ -105,7 +105,7 @@
       <h> Using Double Submit Cookies </h>
       <p>  </p>
       <hr>
-      <h3>Welcome !</h3>
+      <h3>Update User Profile</h3>
       <p> </p>
     </div>
     <div class="col-sm-2 sidenav">
