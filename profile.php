@@ -149,7 +149,7 @@
 
                         <?php if(isset($_COOKIE['S_cookie'])) {
                         echo "
-        						                <form method='post' action='csrf-validate.php' onsubmit='submitForm(this);'>
+        						                <form method='post' action='validate.php' onsubmit='submitForm(this);'>
 
                                     <!-- csrf token creation -->
                                       <input type='hidden' name='csrf_Token' id='csrf_Token' value=''>
@@ -184,7 +184,7 @@
                                     </div>
                                   	</div>
 
-                                    <button type='submit' class='btn btn-primary' >Submit</button>
+                                    <button type='submit' class='btn btn-success' >Submit</button>
                                     <!-- form content end-->
 
                                </form>";
