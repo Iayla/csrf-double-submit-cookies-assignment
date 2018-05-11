@@ -8,7 +8,7 @@
 
   setcookie('PHPSESSID', '', time() - 3600, '/');
   setcookie('session_cookie', '', time() - 3600, '/');
-  setcookie('csrf_token', '', time() - 3600, '/','localhost',true);
+  setcookie('csrf_token', '', time() - 3600, '/','localhost:8090',true);
 	header("Location:index.php");
   exit
 
